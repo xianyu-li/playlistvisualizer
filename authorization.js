@@ -1,6 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('code');
-const redirect_uri = "https%3A%2F%2Fxianyu-li.github.io%2Fplaylistvisualizer%2Fauthorization.html";
+const redirect_uri = "https://xianyu-li.github.io/playlistvisualizer/authorization.html";
 
 if (token) {
     fetch("https://accounts.spotify.com/api/token", {
