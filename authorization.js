@@ -15,11 +15,11 @@ if (token) {
         .then(data => {
             document.cookie = `access_token=${data.access_token}`;
             console.log(data.access_token)
-            location.href = "/"
+            // location.href = "/"
         })
         .catch(err => {
             console.log(err);
-            location.href = "/login";
+            // location.href = "/login";
         })
 } else {
     location.href = "login.html";
