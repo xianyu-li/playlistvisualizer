@@ -14,7 +14,7 @@ const token = urlParams.get('code')
 const loginButton = document.getElementById("login-button");
 
 loginButton.onclick = function () {
-    location.href = "https://accounts.spotify.com/authorize?client_id=8cebb2f15481443590e552bb5ddde767&scopes=playlist-read-private&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2F"
+    location.href = "https://accounts.spotify.com/authorize?client_id=8cebb2f15481443590e552bb5ddde767&scopes=playlist-read-private&response_type=code&redirect_uri=https%3A%2F%2Fxianyu-li.github.io%2Fplaylistvisualizer%2F"
 }
 
 const fetchPlaylistButton = document.getElementById("fetch-playlist-button");
@@ -23,7 +23,7 @@ const fetchPlaylistButton = document.getElementById("fetch-playlist-button");
 fetchPlaylistButton.onclick = async () => {
 
     let accessToken = await fetch("https://accounts.spotify.com/api/token", {
-        body: `grant_type=authorization_code&code=${token}&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2F`,
+        body: `grant_type=authorization_code&code=${token}&redirect_uri=https%3A%2F%2Fxianyu-li.github.io%2Fplaylistvisualizer%2F`,
         headers: {
             Authorization: "Basic OGNlYmIyZjE1NDgxNDQzNTkwZTU1MmJiNWRkZGU3Njc6YmQyNzE2MDdkM2Y4NGI2NzkyMGM1ZGI4NGVjMjAyYmU=",
             "Content-Type": "application/x-www-form-urlencoded"
