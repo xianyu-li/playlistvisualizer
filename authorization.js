@@ -1,6 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('code');
-const redirect_uri = "https%3A%2F%2Fxianyu-li.github.io%2Fplaylistvisualizer%2Fauthorization.html";
+const redirect_uri = "https://xianyu-li.github.io/playlistvisualizer/authorization.html";
 
 if (token) {
     fetch("https://accounts.spotify.com/api/token", {
@@ -15,11 +15,11 @@ if (token) {
         .then(data => {
             document.cookie = `access_token=${data.access_token}`;
             console.log(data.access_token)
-            location.href = "https://xianyu-li.github.io/playlistvisualizer"
+            // location.href = "https://xianyu-li.github.io/playlistvisualizer"
         })
         .catch(err => {
             console.log(err);
-            location.href = "login.html";
+            // location.href = "login.html";
         })
 } else {
     location.href = "login.html";
