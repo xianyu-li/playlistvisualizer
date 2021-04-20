@@ -14,10 +14,7 @@ if (token) {
         .then(res => res.json())
         .then(data => {
             document.cookie = `access_token=${data.access_token}`;
-
-            setTimeout(function() {
-                location.href = "https://xianyu-li.github.io/playlistvisualizer/"
-            }, 1000);
+            location.href = "https://xianyu-li.github.io/playlistvisualizer/"
         })
         .catch(err => {
             console.log(err);
