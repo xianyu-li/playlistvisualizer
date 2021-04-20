@@ -16,6 +16,7 @@ if (token) {
             document.cookie = `access_token=${data.access_token}`;
             console.log(data.access_token)
             // location.href = "https://xianyu-li.github.io/playlistvisualizer"
+            location.href = "https://xianyu-li.github.io/playlistvisualizer/"
         })
         .catch(err => {
             console.log(err);
