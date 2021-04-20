@@ -13,8 +13,12 @@ if (token) {
     })
         .then(res => res.json())
         .then(data => {
-            document.cookie = `access_token=${data.access_token}`;
-            location.href = "https://xianyu-li.github.io/playlistvisualizer/"
+            if (data.access_token) {
+                document.cookie = `access_token=${data.access_token}`;
+                location.href = "https://xianyu-li.github.io/playlistvisualizer/"
+            } else {
+                location.href = "login.html";
+            }
         })
         .catch(err => {
             console.log(err);
