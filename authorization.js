@@ -14,13 +14,14 @@ if (token) {
         .then(res => res.json())
         .then(data => {
             document.cookie = `access_token=${data.access_token}`;
-            console.log(data.access_token)
-            // location.href = "https://xianyu-li.github.io/playlistvisualizer"
-            location.href = "https://xianyu-li.github.io/playlistvisualizer/"
+
+            setTimeout(function() {
+                location.href = "https://xianyu-li.github.io/playlistvisualizer/"
+            }, 1000);
         })
         .catch(err => {
             console.log(err);
-            // location.href = "login.html";
+            location.href = "login.html";
         })
 } else {
     location.href = "login.html";
