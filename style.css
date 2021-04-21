@@ -1,4 +1,30 @@
-iframe{
-    display: block;
-    padding-top: 2em;
+body{
+    background: black;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+button{
+    background: none;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10;
+    overflow: hidden;
+    padding: 13px 60px;
+    text-align: center;
+    text-transform: uppercase;
+
+    font-size: 13px;  
+    font-family: 'Space Grotesk', sans-serif;
+    border: 0 none;
+    border: 2px solid white;
+    border-radius: 60px ;
+}
+
+button:hover{
+    z-index: 0;
+    background: #1f1f1f;
+
+    
 }
