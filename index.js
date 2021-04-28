@@ -42,29 +42,29 @@ function fetchPlaylist(){
         .then(res => res.json())
         .then(aF => {
             const audioFeatures = aF.audio_features.filter(item => item !== null);
-            const acousticness = audioFeatures.reduce((acc, cv) => acc + cv.acousticness, 0) / audioFeatures.length;
+            // const acousticness = audioFeatures.reduce((acc, cv) => acc + cv.acousticness, 0) / audioFeatures.length;
             const danceability = audioFeatures.reduce((a, cv) => cv.danceability + a, 0) / audioFeatures.length;
             const energy = audioFeatures.reduce((a, cv) => cv.energy + a, 0) / audioFeatures.length;
-            const instrumentalness = audioFeatures.reduce((a, cv) => cv.instrumentalness + a, 0) / audioFeatures.length;
-            const liveness = audioFeatures.reduce((a, cv) => cv.liveness + a, 0) / audioFeatures.length;
+            // const instrumentalness = audioFeatures.reduce((a, cv) => cv.instrumentalness + a, 0) / audioFeatures.length;
+            // const liveness = audioFeatures.reduce((a, cv) => cv.liveness + a, 0) / audioFeatures.length;
             const loudness = audioFeatures.reduce((a, cv) => cv.loudness + a, 0) / audioFeatures.length;
-            const speechiness = audioFeatures.reduce((a, cv) => cv.speechiness + a, 0) / audioFeatures.length;
-            const tempo = audioFeatures.reduce((a, cv) => cv.tempo + a, 0) / audioFeatures.length;
+            // const speechiness = audioFeatures.reduce((a, cv) => cv.speechiness + a, 0) / audioFeatures.length;
+            // const tempo = audioFeatures.reduce((a, cv) => cv.tempo + a, 0) / audioFeatures.length;
             const valence = audioFeatures.reduce((a, cv) => cv.valence + a, 0) / audioFeatures.length;
 
             return {
-                acousticness,
+                // acousticness,
                 danceability,
                 energy,
-                instrumentalness,
-                liveness,
+                // instrumentalness,
+                // liveness,
                 loudness,
-                speechiness,
-                tempo,
+                // speechiness,
+                // tempo,
                 valence
             }
         })
-        .then(audioFeatureAvg => console.log(audioFeatureAvg))
+        .then(audioFeatureAvg => startVisualizer(audioFeatureAvg))
         .catch(err => {
             console.log(err);
             location.href = "login.html";
@@ -72,3 +72,52 @@ function fetchPlaylist(){
 }
 
 fetchPlaylist();
+
+let spotifyAudioProps;
+
+function setup(){
+    createCanvas(innerWidth, innerHeight, WEBGL);
+    angleMode(DEGREES) 
+}
+
+function draw(){
+    if (!spotifyAudioProps){
+        return;
+    }
+
+    background (30)
+    noFill()
+    stroke(255)
+    rotate(20)
+    rotate(frameCount/ 10)
+    for( var i = 0; i < 20; i++) {
+        var r = map
+        beginShape()
+        for (var j = 0; j < 360; j += 40) {
+            var rad = i * 20
+            var x = rad * cos(j)
+            var y = rad *  sin(j)
+            var z = sin(frameCount * 2) * spotifyAudioProps.loudness* (-3)
+            vertex(x, y, z)
+        }
+        endShape(CLOSE)
+    }
+}
+
+function startVisualizer(audioFeatureAvg){
+    spotifyAudioProps = audioFeatureAvg
+}
+
+const spotifyObj = {
+    acousticness: 0.5985,
+    danceability: 0.528,
+    energy: 0.444475,
+    instrumentalness: 0.3020192,
+    liveness: 0.136175,
+    loudness: -11,
+    speechiness: 0.080175,
+    tempo: 118.94125,
+    valence: 0.46515,
+}
+
+// startVisualizer(spotifyObj)
