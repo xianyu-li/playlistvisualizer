@@ -2,7 +2,27 @@ body{
     background: black;
     color: white;
     font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    
 }
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 43px;
+    font-weight: 600;
+}
+
 
 button{
     background: none;
@@ -24,7 +44,5 @@ button{
 
 button:hover{
     z-index: 0;
-    background: #1f1f1f;
-
-    
+    background:#1f1f1f;  
 }

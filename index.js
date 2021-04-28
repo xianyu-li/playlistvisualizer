@@ -26,9 +26,7 @@ if (!accessToken) {
     location.href = "login.html";
 }
 
-const fetchPlaylistButton = document.getElementById("fetch-playlist-button");
-
-fetchPlaylistButton.onclick = () => {
+function fetchPlaylist(){
     fetch("https://api.spotify.com/v1/playlists/2gm7y7824ov5NxoKNLwtUv", {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -71,4 +69,6 @@ fetchPlaylistButton.onclick = () => {
             console.log(err);
             location.href = "login.html";
         })
-};
+}
+
+fetchPlaylist();
