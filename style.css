@@ -31,7 +31,7 @@ h1{
 }
 
 
-button{
+#login-button{
     background: none;
     color: white;
     cursor: pointer;
@@ -49,7 +49,7 @@ button{
     border-radius: 60px ;
 }
 
-button:hover{
+#login-button:hover{
     z-index: 1;
     background:#1f1f1f;  
 }

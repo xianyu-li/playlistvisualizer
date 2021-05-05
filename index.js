@@ -69,7 +69,7 @@ function fetchPlaylist(){
 function setup(){
 	createCanvas(windowWidth, windowHeight);
     colorMode(HSL);
-    if(spotifyAudioProps.valence > 0.5){
+    if(spotifyAudioProps?.valence > 0.5){
         dH = random(180,360);
         dS = random (50,100);
         dL = random (50, 90);
