@@ -12,10 +12,33 @@
 
 </head>
 <body>
+
+    <div class="panel">
+        <div class="overlay">
+            <button class="openbtn" onclick="openNav"><span>close</span></a>
+
+            <div class="playlist-mood"></div>
+            <div class="spotify-embed">
+                <iframe src="https://open.spotify.com/embed/playlist/2gm7y7824ov5NxoKNLwtUv" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-overlay"></div>
+        
     
 
 </body>
     <script src="index.js"></script>
     <script src="libraries/p5.js"></script>
+    <script>
+        function openNav() {
+          document.getElementById("mySidepanel").style.width = "250px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidepanel").style.width = "0";
+        }
+        </script>
 </html>
 

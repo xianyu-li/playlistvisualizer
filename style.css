@@ -3,17 +3,19 @@ body{
     color: white;
     font-family: 'Space Grotesk', sans-serif;
     margin: 0;
+    overflow: hidden;
     
 }
 
 .login-container{
     display: flex;
     flex-direction: column;
-    /* text-align: center; */
+    text-align: center;
     width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
+    z-index:0;
 
 }
 
@@ -21,6 +23,10 @@ h1{
     font-family: 'Work Sans', sans-serif;
     font-size: 43px;
     font-weight: 600;
+}
+
+#intro{
+    width: 500px;
 }
 
 
@@ -43,6 +49,37 @@ button{
 }
 
 button:hover{
-    z-index: 0;
+    z-index: 1;
     background:#1f1f1f;  
+}
+
+canvas{
+    position: relative;
+    z-index: 0;
+}
+
+/* side panel */
+
+.panel {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    height: 100%;
+    width: 350px;
+
+}
+
+.spotify-embed{
+    display: inline-block;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.bttn{
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+    /* position:absolute; */
+    z-index:0;
+    padding-top: 20px;
 }
