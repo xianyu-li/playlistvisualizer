@@ -77,7 +77,7 @@ canvas{
 
 .bttn{
     display: inline-block;
-    float: right;
+    /* float: right; */
     cursor: pointer;
     /* position:absolute; */
     z-index:0;

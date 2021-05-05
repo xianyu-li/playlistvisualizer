@@ -121,7 +121,7 @@ function draw(){
     background(bH,bS,bL);
     translate(windowWidth / 2, windowHeight / 2);
 
-    var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 100);
+    var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 30);
     var danceability = map(spotifyAudioProps?.danceability, 0.0, 1.0, 0.01, 0.1 );
     var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 30);
 
@@ -129,7 +129,7 @@ function draw(){
         dS = random (50,100);
         dL = random (50, 90);
 
-	mapMouseX = map(mouseX, 0, width, 1, 50);
+	mapMouseX = map(mouseX, 0, width, 1, 150);
 	mapMouseXbass = map(mouseX, 0, width, 1, 5);
 	mapMouseY = map(mouseY, 0, height, 2, 6);
 
@@ -142,6 +142,7 @@ function draw(){
 
 		noFill();
         
+
         //loudness
         push();
         stroke(lH,lS,lL);
@@ -188,18 +189,29 @@ function startVisualizer(audioFeatureAvg){
     console.log(audioFeatureAvg)
 }
 
-//testing
+testing
 const spotifyObj = {
-    acousticness: 0.5985,
-    danceability: 1,
-    energy:0,
-    instrumentalness: 0.3020192,
-    liveness: 0.136175,
-    loudness: -0,
-    speechiness: 0.080175,
-    tempo: 118.94125,
-    valence: .6,
+    danceability: 0,
+    energy:.5,
+    loudness: -40,
+    valence: 1,
 }
+
+//max settings
+// const spotifyObj = {
+//     danceability: 1,
+//     energy: 1,
+//     loudness: -60,
+//     valence: 1,
+// }
+
+//min settings
+// const spotifyObj = {
+//     danceability: 0,
+//     energy: 0,
+//     loudness: -00,
+//     valence: 0,
+// }
 
 const accessToken = getCookiekey("access_token")
 
@@ -209,4 +221,4 @@ if (!accessToken) {
 let spotifyAudioProps;
 fetchPlaylist();
 
-// startVisualizer(spotifyObj)
+startVisualizer(spotifyObj)
