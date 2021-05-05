@@ -47,6 +47,12 @@ function fetchPlaylist(){
             // const tempo = audioFeatures.reduce((a, cv) => cv.tempo + a, 0) / audioFeatures.length;
             const valence = audioFeatures.reduce((a, cv) => cv.valence + a, 0) / audioFeatures.length;
 
+            const spotifyVari = document.getElementById("spotify-vari")
+            const spotifyText = document.createElement("div")
+            spotifyText.textContent = `Danceability: ${danceability}\nEnergy: ${energy}\nLoudness: ${loudness}\nValence: ${valence}`
+            spotifyVari.appendChild(spotifyText)
+             
+
             return {
                 // acousticness,
                 danceability,
@@ -65,7 +71,7 @@ function fetchPlaylist(){
             location.href = "login.html";
         })
 }
-    
+
 function setup(){
 	createCanvas(windowWidth, windowHeight);
     colorMode(HSL);
@@ -184,7 +190,7 @@ function startVisualizer(audioFeatureAvg){
     console.log(audioFeatureAvg)
 }
 
-
+//testing
 const spotifyObj = {
     acousticness: 0.5985,
     danceability: .2,
