@@ -69,6 +69,35 @@ function fetchPlaylist(){
 function setup(){
 	createCanvas(windowWidth, windowHeight);
     colorMode(HSL);
+    if(spotifyAudioProps.valence > 0.5){
+        dH = random(180,360);
+        dS = random (50,100);
+        dL = random (50, 90);
+        eH = random(180,360);
+        eS = random (50,100);
+        eL = random (50, 90);
+        lH = random(180,360);
+        lS = random (50,100);
+        lL = random (50, 90);
+        bH = random(180,360);
+        bS = random (50,100);
+        bL = random (50, 90);
+    } else {
+        dH = random(0,179);
+        dS = random (0,49);
+        dL = random (10, 49);
+        eH = random(0,179);
+        eS = random (0,49);
+        eL = random (10, 49);
+        lH = random(0,179);
+        lS = random (0,49);
+        lL = random (10, 49);
+        bH = random(0,179);
+        bS = random (0,49);
+        bL = random (10, 49);
+        
+    }
+    
 }
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
@@ -78,22 +107,23 @@ const GR = (1 + Math.sqrt(5)) / 2;
 
 function draw(){
 
-    var H = map(spotifyAudioProps.valence, 0.0, 1.0, 0, 341)
-    var S = map(spotifyAudioProps.valence, 0.0, 1.0, 14, 100)
-    var L = map(spotifyAudioProps.valence, 0.0, 1.0, 12, 95)
+    var H = map(spotifyAudioProps.valence, 0.0, 1.0, 1, 341);
+    var S = map(spotifyAudioProps.valence, 0.0, 1.0, 14, 100);
+    var L = map(spotifyAudioProps.valence, 0.0, 1.0, 12, 95);
 
-
-
-    background("black");
+ 
+    background(bH,bS,bL);
     translate(windowWidth / 2, windowHeight / 2);
 
-    var loudness = map(spotifyAudioProps.loudness, 0, -60, 1, 100)
-    var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 )
-    var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40)
+    var loudness = map(spotifyAudioProps.loudness, 0, -60, 1, 100);
+    var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 );
+    var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40);
 
+ dH = random(180,360);
+        dS = random (50,100);
+        dL = random (50, 90);
 
-
-	mapMouseX = map(mouseX, 0, width, 1, 10);
+	mapMouseX = map(mouseX, 0, width, 1, 50);
 	mapMouseXbass = map(mouseX, 0, width, 1, 5);
 	mapMouseY = map(mouseY, 0, height, 2, 6);
 
@@ -108,19 +138,18 @@ function draw(){
         
         //energy
 		push();
-		stroke("red");
-        if(spotifyAudioProps.valence > 0.5){
+        
+        stroke(eH,eS,eL)
 
-        }
 		rotate(-frameCount * energy/i*0.002);
 		strokeWeight(0.5);
-		square(-mapMouseX + i, -mapMouseX - i, energy * i, 3);
+		polygon(-mapMouseX + i, -mapMouseX - i, energy * i, 3);
 		pop();
 
 
         //loudness
         push();
-        stroke(H,S,L);
+        stroke(lH,lS,lL);
         strokeWeight(0.2);
         rotate(frameCount * i /1000 )
         polygon(mapMouseX + i / 2, mapMouseY - i * 2, loudness * i, 7);
@@ -138,14 +167,14 @@ function draw(){
 
         //danceability
         push();
-		stroke("pink");
+		stroke(H,S,L);
 		strokeWeight(5);
 		rotate(-frameCount * danceability);
 		point(-100 , radius / 2);
 		point(200 , TWO_PI / 2);
 		point(400 , TWO_PI / 2);
 		point(800 , radius / 2);
-        stroke("green");
+
 		pop();
 	}
 
@@ -171,22 +200,22 @@ function startVisualizer(audioFeatureAvg){
 
 const spotifyObj = {
     acousticness: 0.5985,
-    danceability: 0,
-    energy:0,
+    danceability: .2,
+    energy:.5,
     instrumentalness: 0.3020192,
     liveness: 0.136175,
-    loudness: 60,
+    loudness: -50,
     speechiness: 0.080175,
     tempo: 118.94125,
-    valence: .4,
+    valence: .5,
 }
 
-const accessToken = getCookiekey("access_token")
+// const accessToken = getCookiekey("access_token")
 
-if (!accessToken) {
-    location.href = "login.html";
-}
-let spotifyAudioProps;
-fetchPlaylist();
+// if (!accessToken) {
+//     location.href = "login.html";
+// }
+// let spotifyAudioProps;
+// fetchPlaylist();
 
-// startVisualizer(spotifyObj)
+startVisualizer(spotifyObj)
