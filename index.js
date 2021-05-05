@@ -123,7 +123,7 @@ function draw(){
 
     var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 100);
     var danceability = map(spotifyAudioProps?.danceability, 0.0, 1.0, 0.01, 0.1 );
-    var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 70);
+    var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 30);
 
  dH = random(180,360);
         dS = random (50,100);
