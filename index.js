@@ -189,15 +189,15 @@ function startVisualizer(audioFeatureAvg){
     console.log(audioFeatureAvg)
 }
 
-testing
-const spotifyObj = {
-    danceability: 0,
-    energy:.5,
-    loudness: -40,
-    valence: 1,
-}
+// testing
+// const spotifyObj = {
+//     danceability: 0,
+//     energy:.5,
+//     loudness: -40,
+//     valence: .7,
+// }
 
-//max settings
+// max settings
 // const spotifyObj = {
 //     danceability: 1,
 //     energy: 1,
@@ -221,4 +221,4 @@ if (!accessToken) {
 let spotifyAudioProps;
 fetchPlaylist();
 
-startVisualizer(spotifyObj)
+// startVisualizer(spotifyObj)
