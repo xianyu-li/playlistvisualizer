@@ -112,18 +112,18 @@ function windowResized() {
 const GR = (1 + Math.sqrt(5)) / 2;
 
 function draw(){
-
-    var H = map(spotifyAudioProps.valence, 0.0, 1.0, 1, 341);
-    var S = map(spotifyAudioProps.valence, 0.0, 1.0, 14, 100);
-    var L = map(spotifyAudioProps.valence, 0.0, 1.0, 12, 95);
+    let v = spotifyAudioProps ? spotifyAudioProps.valence : 0
+    var H = map(v, 0.0, 1.0, 1, 341);
+    var S = map(v, 0.0, 1.0, 14, 100);
+    var L = map(v, 0.0, 1.0, 12, 95);
 
  
     background(bH,bS,bL);
     translate(windowWidth / 2, windowHeight / 2);
 
     var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 100);
-    var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 );
-    var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40);
+    var danceability = map(spotifyAudioProps?.danceability, 0.0, 1.0, 0.01, 0.05 );
+    var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 40);
 
  dH = random(180,360);
         dS = random (50,100);

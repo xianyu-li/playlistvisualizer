@@ -83,3 +83,9 @@ canvas{
     z-index:0;
     padding-top: 20px;
 }
+
+#spotify-vari{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
