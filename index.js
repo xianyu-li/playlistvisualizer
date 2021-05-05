@@ -210,12 +210,12 @@ const spotifyObj = {
     valence: .5,
 }
 
-// const accessToken = getCookiekey("access_token")
+const accessToken = getCookiekey("access_token")
 
-// if (!accessToken) {
-//     location.href = "login.html";
-// }
-// let spotifyAudioProps;
-// fetchPlaylist();
+if (!accessToken) {
+    location.href = "login.html";
+}
+let spotifyAudioProps;
+fetchPlaylist();
 
-startVisualizer(spotifyObj)
+// startVisualizer(spotifyObj)
