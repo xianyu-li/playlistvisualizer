@@ -69,7 +69,7 @@ function fetchPlaylist(){
 function setup(){
 	createCanvas(windowWidth, windowHeight);
     colorMode(HSL);
-    if(spotifyAudioProps.valence > 0.5){
+    if(audioFeatureAvg.valence > 0.5){
         dH = random(180,360);
         dS = random (50,100);
         dL = random (50, 90);
@@ -107,17 +107,17 @@ const GR = (1 + Math.sqrt(5)) / 2;
 
 function draw(){
 
-    var H = map(spotifyAudioProps.valence, 0.0, 1.0, 1, 341);
-    var S = map(spotifyAudioProps.valence, 0.0, 1.0, 14, 100);
-    var L = map(spotifyAudioProps.valence, 0.0, 1.0, 12, 95);
+    var H = map(audioFeatureAvg.valence, 0.0, 1.0, 1, 341);
+    var S = map(audioFeatureAvg.valence, 0.0, 1.0, 14, 100);
+    var L = map(audioFeatureAvg.valence, 0.0, 1.0, 12, 95);
 
  
     background(bH,bS,bL);
     translate(windowWidth / 2, windowHeight / 2);
 
-    var loudness = map(spotifyAudioProps.loudness, 0, -60, 1, 100);
-    var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 );
-    var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40);
+    var loudness = map(audioFeatureAvg.loudness, 0, -60, 1, 100);
+    var danceability = map(audioFeatureAvg.danceability, 0.0, 1.0, 0.01, 0.05 );
+    var energy = map(audioFeatureAvg.energy, 0.0, 1.0, 1, 40);
 
  dH = random(180,360);
         dS = random (50,100);
