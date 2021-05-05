@@ -49,7 +49,7 @@ function fetchPlaylist(){
 
             const spotifyVari = document.getElementById("spotify-vari")
             const spotifyText = document.createElement("div")
-            spotifyText.textContent = `Danceability: ${danceability}\nEnergy: ${energy}\nLoudness: ${loudness}\nValence: ${valence}`
+            spotifyText.textContent = `Danceability: ${danceability.toFixed(3)}\nEnergy: ${energy.toFixed(3)}\nLoudness: ${loudness.toFixed(3)}\nValence: ${valence.toFixed(3)}`
             spotifyVari.appendChild(spotifyText)
              
 
