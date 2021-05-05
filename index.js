@@ -142,14 +142,6 @@ function draw(){
 
 		noFill();
         
-        //energy
-		push();
-        stroke(eH,eS,eL)
-		rotate(-frameCount * energy/i*0.002);
-		strokeWeight(0.5);
-		polygon(-mapMouseX + i, -mapMouseY - i, energy * i , 3);
-		pop();
-
         //loudness
         push();
         stroke(lH,lS,lL);
@@ -157,6 +149,14 @@ function draw(){
         rotate(frameCount * i /1000 )
         polygon(mapMouseX + i / 2, mapMouseY - i * 2, loudness * i, 7);
         pop();
+
+         //energy
+		push();
+        stroke(eH,eS,eL)
+		rotate(-frameCount * energy/i*0.002);
+		strokeWeight(0.5);
+		polygon(-mapMouseX + i, -mapMouseY - i, energy * i , 3);
+		pop();
 
         //danceability
         push();
