@@ -115,7 +115,7 @@ function draw(){
     background(bH,bS,bL);
     translate(windowWidth / 2, windowHeight / 2);
 
-    var loudness = map(spotifyAudioProps.loudness, 0, -60, 1, 100);
+    var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 100);
     var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 );
     var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40);
 
@@ -138,14 +138,11 @@ function draw(){
         
         //energy
 		push();
-        
         stroke(eH,eS,eL)
-
 		rotate(-frameCount * energy/i*0.002);
 		strokeWeight(0.5);
-		polygon(-mapMouseX + i, -mapMouseX - i, energy * i, 3);
+		polygon(-mapMouseX + i, -mapMouseY - i, energy * i , 3);
 		pop();
-
 
         //loudness
         push();
@@ -154,16 +151,6 @@ function draw(){
         rotate(frameCount * i /1000 )
         polygon(mapMouseX + i / 2, mapMouseY - i * 2, loudness * i, 7);
         pop();
-
-
-		/*----------  TREMBLE  ----------*/
-		// push();
-		// stroke("blue");
-		// strokeWeight(0.6);
-		// scale(mouseX * 0.0005);
-		// rotate((mouseX * 0.002));
-		// polygon(mapMouse + i / 2, mapMouse - i / 2, mapMouse * i / 600, 3);
-		// pop();
 
         //danceability
         push();
@@ -185,8 +172,8 @@ function polygon(x, y, radius, npoints) {
 	var angle = TWO_PI/ npoints;
 	beginShape();
 	for (var a = 0; a < TWO_PI; a += angle) {
-		var sx = x + cos(a);
-		var sy = y + sin(a) * radius;
+		var sx = x + cos(a) * radius;
+		var sy = y + sin(a)  ;
 		vertex(sx, sy);
 	}
 	endShape(CLOSE);
@@ -201,21 +188,21 @@ function startVisualizer(audioFeatureAvg){
 const spotifyObj = {
     acousticness: 0.5985,
     danceability: .2,
-    energy:.5,
+    energy:.4,
     instrumentalness: 0.3020192,
     liveness: 0.136175,
     loudness: -50,
     speechiness: 0.080175,
     tempo: 118.94125,
-    valence: .5,
+    valence: .7,
 }
 
-const accessToken = getCookiekey("access_token")
+// const accessToken = getCookiekey("access_token")
 
-if (!accessToken) {
-    location.href = "login.html";
-}
-let spotifyAudioProps;
-fetchPlaylist();
+// if (!accessToken) {
+//     location.href = "login.html";
+// }
+// let spotifyAudioProps;
+// fetchPlaylist();
 
-// startVisualizer(spotifyObj)
+startVisualizer(spotifyObj)
