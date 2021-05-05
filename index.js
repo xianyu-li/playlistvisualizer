@@ -112,7 +112,7 @@ function windowResized() {
 const GR = (1 + Math.sqrt(5)) / 2;
 
 function draw(){
-    let v = spotifyAudioProps ? spotifyAudioProps.valence : 0
+    let v = spotifyAudioProps ? spotifyAudioProps.valence : 100
     var H = map(v, 0.0, 1.0, 1, 341);
     var S = map(v, 0.0, 1.0, 14, 100);
     var L = map(v, 0.0, 1.0, 12, 95);
@@ -194,7 +194,7 @@ function startVisualizer(audioFeatureAvg){
 const spotifyObj = {
     acousticness: 0.5985,
     danceability: .2,
-    energy:.4,
+    energy:1,
     instrumentalness: 0.3020192,
     liveness: 0.136175,
     loudness: -50,
@@ -203,12 +203,12 @@ const spotifyObj = {
     valence: .7,
 }
 
-const accessToken = getCookiekey("access_token")
+// const accessToken = getCookiekey("access_token")
 
-if (!accessToken) {
-    location.href = "login.html";
-}
-let spotifyAudioProps;
-fetchPlaylist();
+// if (!accessToken) {
+//     location.href = "login.html";
+// }
+// let spotifyAudioProps;
+// fetchPlaylist();
 
-// startVisualizer(spotifyObj)
+startVisualizer(spotifyObj)
