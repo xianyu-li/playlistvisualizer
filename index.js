@@ -91,16 +91,16 @@ function setup(){
     } else {
         dH = random(0,179);
         dS = random (0,49);
-        dL = random (10, 49);
+        dL = random (0, 49);
         eH = random(0,179);
         eS = random (0,49);
-        eL = random (10, 49);
+        eL = random (0, 49);
         lH = random(0,179);
         lS = random (0,49);
-        lL = random (10, 49);
+        lL = random (0, 49);
         bH = random(0,179);
         bS = random (0,49);
-        bL = random (10, 49);
+        bL = random (0, 49);
         
     }
     
