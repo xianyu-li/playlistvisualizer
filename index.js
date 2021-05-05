@@ -165,19 +165,21 @@ function polygon(x, y, radius, npoints) {
 
 function startVisualizer(audioFeatureAvg){
     spotifyAudioProps = audioFeatureAvg
+    console.log(audioFeatureAvg)
 }
 
-// const spotifyObj = {
-//     acousticness: 0.5985,
-//     danceability: 0,
-//     energy:0,
-//     instrumentalness: 0.3020192,
-//     liveness: 0.136175,
-//     loudness: 60,
-//     speechiness: 0.080175,
-//     tempo: 118.94125,
-//     valence: .4,
-// }
+
+const spotifyObj = {
+    acousticness: 0.5985,
+    danceability: 0,
+    energy:0,
+    instrumentalness: 0.3020192,
+    liveness: 0.136175,
+    loudness: 60,
+    speechiness: 0.080175,
+    tempo: 118.94125,
+    valence: .4,
+}
 
 const accessToken = getCookiekey("access_token")
 
