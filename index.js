@@ -122,8 +122,8 @@ function draw(){
     translate(windowWidth / 2, windowHeight / 2);
 
     var loudness = map(spotifyAudioProps?.loudness, 0, -60, 1, 100);
-    var danceability = map(spotifyAudioProps?.danceability, 0.0, 1.0, 0.01, 0.05 );
-    var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 40);
+    var danceability = map(spotifyAudioProps?.danceability, 0.0, 1.0, 0.01, 0.1 );
+    var energy = map(spotifyAudioProps?.energy, 0.0, 1.0, 1, 70);
 
  dH = random(180,360);
         dS = random (50,100);
@@ -170,8 +170,6 @@ function draw(){
 
 		pop();
 	}
-
-     
    
 }
 function polygon(x, y, radius, npoints) {
@@ -193,14 +191,14 @@ function startVisualizer(audioFeatureAvg){
 //testing
 const spotifyObj = {
     acousticness: 0.5985,
-    danceability: .2,
-    energy:1,
+    danceability: 1,
+    energy:0,
     instrumentalness: 0.3020192,
     liveness: 0.136175,
-    loudness: -50,
+    loudness: -0,
     speechiness: 0.080175,
     tempo: 118.94125,
-    valence: .7,
+    valence: .6,
 }
 
 const accessToken = getCookiekey("access_token")
