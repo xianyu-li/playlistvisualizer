@@ -20,11 +20,6 @@ function getCookiekey(key) {
     return result;
 }
 
-const accessToken = getCookiekey("access_token")
-
-if (!accessToken) {
-    location.href = "login.html";
-}
 
 function fetchPlaylist(){
     fetch("https://api.spotify.com/v1/playlists/2gm7y7824ov5NxoKNLwtUv", {
@@ -70,54 +65,126 @@ function fetchPlaylist(){
             location.href = "login.html";
         })
 }
-
-fetchPlaylist();
-
-let spotifyAudioProps;
-
+    
 function setup(){
-    createCanvas(innerWidth, innerHeight, WEBGL);
-    angleMode(DEGREES) 
+	createCanvas(windowWidth, windowHeight);
+    colorMode(HSL);
+}
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
 }
 
-function draw(){
-    if (!spotifyAudioProps){
-        return;
-    }
+const GR = (1 + Math.sqrt(5)) / 2;
 
-    background (30)
-    noFill()
-    stroke(255)
-    rotate(20)
-    rotate(frameCount/ 10)
-    for( var i = 0; i < 20; i++) {
-        var r = map
-        beginShape()
-        for (var j = 0; j < 360; j += 40) {
-            var rad = i * 20
-            var x = rad * cos(j)
-            var y = rad *  sin(j)
-            var z = sin(frameCount * 2) * spotifyAudioProps.loudness* (-3)
-            vertex(x, y, z)
+function draw(){
+
+    var H = map(spotifyAudioProps.valence, 0.0, 1.0, 0, 341)
+    var S = map(spotifyAudioProps.valence, 0.0, 1.0, 14, 100)
+    var L = map(spotifyAudioProps.valence, 0.0, 1.0, 12, 95)
+
+
+
+    background("black");
+    translate(windowWidth / 2, windowHeight / 2);
+
+    var loudness = map(spotifyAudioProps.loudness, 0, -60, 1, 100)
+    var danceability = map(spotifyAudioProps.danceability, 0.0, 1.0, 0.01, 0.05 )
+    var energy = map(spotifyAudioProps.energy, 0.0, 1.0, 1, 40)
+
+
+
+	mapMouseX = map(mouseX, 0, width, 1, 10);
+	mapMouseXbass = map(mouseX, 0, width, 1, 5);
+	mapMouseY = map(mouseY, 0, height, 2, 6);
+
+	pieces = 30;
+	radius = 100;
+
+
+    for (i = 0; i < pieces; i += 0.1) {
+		rotate(TWO_PI / (pieces / 2));
+
+		noFill();
+        
+        //energy
+		push();
+		stroke("red");
+        if(spotifyAudioProps.valence > 0.5){
+
         }
-        endShape(CLOSE)
-    }
+		rotate(-frameCount * energy/i*0.002);
+		strokeWeight(0.5);
+		square(-mapMouseX + i, -mapMouseX - i, energy * i, 3);
+		pop();
+
+
+        //loudness
+        push();
+        stroke(H,S,L);
+        strokeWeight(0.2);
+        rotate(frameCount * i /1000 )
+        polygon(mapMouseX + i / 2, mapMouseY - i * 2, loudness * i, 7);
+        pop();
+
+
+		/*----------  TREMBLE  ----------*/
+		// push();
+		// stroke("blue");
+		// strokeWeight(0.6);
+		// scale(mouseX * 0.0005);
+		// rotate((mouseX * 0.002));
+		// polygon(mapMouse + i / 2, mapMouse - i / 2, mapMouse * i / 600, 3);
+		// pop();
+
+        //danceability
+        push();
+		stroke("pink");
+		strokeWeight(5);
+		rotate(-frameCount * danceability);
+		point(-100 , radius / 2);
+		point(200 , TWO_PI / 2);
+		point(400 , TWO_PI / 2);
+		point(800 , radius / 2);
+        stroke("green");
+		pop();
+	}
+
+     
+   
+}
+function polygon(x, y, radius, npoints) {
+	var angle = TWO_PI/ npoints;
+	beginShape();
+	for (var a = 0; a < TWO_PI; a += angle) {
+		var sx = x + cos(a);
+		var sy = y + sin(a) * radius;
+		vertex(sx, sy);
+	}
+	endShape(CLOSE);
 }
 
 function startVisualizer(audioFeatureAvg){
     spotifyAudioProps = audioFeatureAvg
 }
 
-const spotifyObj = {
-    acousticness: 0.5985,
-    danceability: 0.528,
-    energy: 0.444475,
-    instrumentalness: 0.3020192,
-    liveness: 0.136175,
-    loudness: -11,
-    speechiness: 0.080175,
-    tempo: 118.94125,
-    valence: 0.46515,
+// const spotifyObj = {
+//     acousticness: 0.5985,
+//     danceability: 0,
+//     energy:0,
+//     instrumentalness: 0.3020192,
+//     liveness: 0.136175,
+//     loudness: 60,
+//     speechiness: 0.080175,
+//     tempo: 118.94125,
+//     valence: .4,
+// }
+
+const accessToken = getCookiekey("access_token")
+
+if (!accessToken) {
+    location.href = "login.html";
 }
+let spotifyAudioProps;
+fetchPlaylist();
 
 // startVisualizer(spotifyObj)
